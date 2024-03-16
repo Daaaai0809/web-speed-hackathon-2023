@@ -8,7 +8,7 @@
     "build": "npm-run-all -s build:tsc build:vite",
     "build:analyze": "npm-run-all -s build:vite --mode analyze",
     "build:tsc": "tsc",
-    "build:vite": "cross-env NODE_ENV=development vite build",
+    "build:vite": "cross-env NODE_ENV=production vite build",
     "format": "npm-run-all -s format:*",
     "format:prettier": "prettier --write './**/*.{ts,tsx,js,jsx,json}'",
     "format:eslint": "eslint ./ --fix --ext .js,.jsx,.ts,.tsx",
