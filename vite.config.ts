@@ -33,7 +33,7 @@ export default defineConfig(async () => {
           experimentalMinChunkSize: 40960,
         },
       },
-      target: 'es2015',
+      target: 'esnext',
     },
     plugins: [
       react(),
