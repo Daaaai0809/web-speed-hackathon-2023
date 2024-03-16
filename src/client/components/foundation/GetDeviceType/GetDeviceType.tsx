@@ -51,16 +51,16 @@ export const GetDeviceType = ({ children }: Props) => {
     window.innerWidth >= 1024 ? DeviceType.DESKTOP : DeviceType.MOBILE
   );
 
+  const observer = new ResizeObserver(() => {
+    setDeviceType(window.innerWidth >= 1024 ? DeviceType.DESKTOP : DeviceType.MOBILE);
+  });
+
   useEffect(() => {
-    const checkIsDesktop = () => {
-      setDeviceType(window.innerWidth >= 1024 ? DeviceType.DESKTOP : DeviceType.MOBILE);
-    };
-
-    window.addEventListener('resize', checkIsDesktop);
+    observer.observe(window.document.body);
     return () => {
-      window.removeEventListener('resize', checkIsDesktop);
+      observer.disconnect();
     };
-  }, []);
+  }, [observer]);
 
-  return children({ deviceType });
+  return <>{children({ deviceType })}</>;
 };
