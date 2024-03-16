@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import type { FC } from 'react';
 import { memo } from 'react';
 
@@ -66,7 +65,13 @@ export const ProductPurchaseSection: FC<Props> = memo(
       </div>
     );
   },
-  _.isEqual,
+  (prevProps, nextProps) => {
+    return (
+      prevProps.amountInCart === nextProps.amountInCart &&
+      prevProps.isAuthUser === nextProps.isAuthUser &&
+      prevProps.product === nextProps.product
+    );
+  }
 );
 
 ProductPurchaseSection.displayName = 'ProductPurchaseSection';

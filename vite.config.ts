@@ -28,11 +28,6 @@ export default defineConfig(async () => {
       cssCodeSplit: true,
       cssTarget: 'es6',
       minify: true,
-      rollupOptions: {
-        output: {
-          experimentalMinChunkSize: 40960,
-        },
-      },
       target: 'esnext',
     },
     plugins: [
