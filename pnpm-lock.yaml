@@ -35,15 +35,9 @@ dependencies:
   classnames:
     specifier: 2.3.2
     version: 2.3.2
-  core-js:
-    specifier: 3.36.0
-    version: 3.36.0
   currency-formatter:
     specifier: 1.5.9
     version: 1.5.9
-  date-time-format-timezone:
-    specifier: 1.0.22
-    version: 1.0.22
   formik:
     specifier: 2.2.9
     version: 2.2.9(react@18.2.0)
@@ -113,9 +107,6 @@ dependencies:
   rollup-plugin-visualizer:
     specifier: 5.12.0
     version: 5.12.0
-  setimmediate:
-    specifier: 1.0.5
-    version: 1.0.5
   sqlite3:
     specifier: 5.1.4
     version: 5.1.4
@@ -2604,11 +2595,6 @@ packages:
     resolution: {integrity: sha512-3DdaFaU/Zf1AnpLiFDeNCD4TOWe3Zl2RZaTzUvWiIk5ERzcCodOE20Vqq4fzCbNoHURFHT4/us/Lfq+S2zyY4w==}
     dev: false
 
-  /core-js@3.36.0:
-    resolution: {integrity: sha512-mt7+TUBbTFg5+GngsAxeKBTl5/VS0guFeJacYge9OmHb+m058UwwIm41SE9T4Den7ClatV57B6TYTuJ0CX1MAw==}
-    requiresBuild: true
-    dev: false
-
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: false
@@ -2725,10 +2711,6 @@ packages:
   /date-fns@2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
-    dev: false
-
-  /date-time-format-timezone@1.0.22:
-    resolution: {integrity: sha512-4hEeKPpNlbFO05ldht9FwJEy2g1xL7kU3dTPY5hNSd1AyMjrrIeUS54kSWgt/KdttYshhjDMIonU+vCmL4NjVw==}
     dev: false
 
   /debug@2.6.9:
@@ -5875,10 +5857,6 @@ packages:
 
   /set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
-    dev: false
-
-  /setimmediate@1.0.5:
-    resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
     dev: false
 
   /setprototypeof@1.1.0:
