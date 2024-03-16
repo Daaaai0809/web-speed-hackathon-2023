@@ -5,6 +5,7 @@ import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments'
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { ProductGridList } from '../ProductGridList';
 import { ProductListSlider } from '../ProductListSlider';
+import { isEqual } from '../../../utils/isEqual';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
@@ -24,10 +25,7 @@ export const ProductList: FC<Props> = memo(({ featureSection }) => {
         }
       }}
     </GetDeviceType>
-   ); 
-// }, _.isEqual);
-}, (prevProps, nextProps) => {
-  return prevProps.featureSection === nextProps.featureSection;
-}); 
+   );
+}, isEqual); 
 
 ProductList.displayName = 'ProductList';

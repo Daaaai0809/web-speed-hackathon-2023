@@ -8,6 +8,7 @@ import { PrimaryAnchor } from '../../foundation/PrimaryAnchor';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 
 import * as styles from './ProductPurchaseSection.styles';
+import { isEqual } from '../../../utils/isEqual';
 
 type Props = {
   product: ProductFragmentResponse | undefined;
@@ -65,13 +66,7 @@ export const ProductPurchaseSection: FC<Props> = memo(
       </div>
     );
   },
-  (prevProps, nextProps) => {
-    return (
-      prevProps.amountInCart === nextProps.amountInCart &&
-      prevProps.isAuthUser === nextProps.isAuthUser &&
-      prevProps.product === nextProps.product
-    );
-  }
+  isEqual
 );
 
 ProductPurchaseSection.displayName = 'ProductPurchaseSection';

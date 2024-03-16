@@ -6,6 +6,7 @@ import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '
 import { ProductOfferLabel } from '../ProductOfferLabel';
 
 import * as styles from './ProductOverview.styles';
+import { isEqual } from '../../../utils/isEqual';
 
 type Props = {
   product: ProductFragmentResponse | undefined;
@@ -58,8 +59,6 @@ export const ProductOverview: FC<Props> = memo(({ activeOffer, product }) => {
       </div>
     </div>
   );
-}, (prevProps, nextProps) => {
-  return prevProps.product === nextProps.product && prevProps.activeOffer === nextProps.activeOffer;
-});
+}, isEqual);
 
 ProductOverview.displayName = 'ProductOverview';

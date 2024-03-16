@@ -7,6 +7,7 @@ import { useTotalPrice } from '../../../hooks/useTotalPrice';
 import { CartItem } from '../CartItem';
 
 import * as styles from './OrderPreview.styles';
+import { isEqual } from '../../../utils/isEqual';
 
 type Props = {
   order: OrderFragmentResponse;
@@ -31,6 +32,6 @@ export const OrderPreview: FC<Props> = memo(({ onRemoveCartItem, onUpdateCartIte
       <p className={styles.totalPrice()}>{currencyFormatter.format(totalPrice, { code: 'JPY', precision: 0 })}</p>
     </div>
   );
-}, (a, b) => JSON.stringify(a) === JSON.stringify(b));
+}, isEqual);
 
 OrderPreview.displayName = 'OrderPreview';

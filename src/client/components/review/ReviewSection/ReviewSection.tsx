@@ -10,6 +10,7 @@ import { TextArea } from '../../foundation/TextArea';
 import { ReviewList } from '../ReviewList';
 
 import * as styles from './ReviewSection.styles';
+import { isEqual } from '../../../utils/isEqual';
 
 const LESS_THAN_64_LENGTH_REGEX = /^([\s\S\n]{0,8}){0,8}$/u;
 // NOTE: 改行含めて 64 文字以内であるかどうか確認する
@@ -70,8 +71,6 @@ export const ReviewSection: FC<Props> = memo(({ hasSignedIn, onSubmitReview, rev
       )}
     </div>
   );
-}, (prevProps, nextProps) => {
-  return prevProps.hasSignedIn === nextProps.hasSignedIn && prevProps.reviews === nextProps.reviews;
-});
+}, isEqual);
 
 ReviewSection.displayName = 'ReviewSection';

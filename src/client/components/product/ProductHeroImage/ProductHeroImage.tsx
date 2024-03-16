@@ -9,6 +9,7 @@ import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { WidthRestriction } from '../../foundation/WidthRestriction';
 
 import * as styles from './ProductHeroImage.styles';
+import { isEqual } from '../../../utils/isEqual';
 
 async function loadImageAsDataURL(url: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
@@ -85,8 +86,6 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       }}
     </GetDeviceType>
   );
-}, (prevProps, nextProps) => {
-  return prevProps.product === nextProps.product && prevProps.title === nextProps.title;
-});
+}, isEqual);
 
 ProductHeroImage.displayName = 'ProductHeroImage';
