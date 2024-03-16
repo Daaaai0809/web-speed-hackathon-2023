@@ -30,18 +30,19 @@ export const ProductListSlider: FC<Props> = ({ featureSection }) => {
       </div>
       <div className={styles.listWrapper()}>
         <ul ref={containerElementRef} className={styles.list({ slideIndex, visibleItemCount })}>
-          {products.map((product, index) => {
-            const hidden = index < slideIndex || slideIndex + visibleItemCount <= index;
-            return (
-              <li
-                key={product.id}
-                className={classNames(styles.item(), {
-                  [styles.item__hidden()]: hidden,
-                })}
-              >
-                <ProductCard product={product} />
-              </li>
-            );
+          {products &&
+            products.map((product, index) => {
+              const hidden = index < slideIndex || slideIndex + visibleItemCount <= index;
+              return (
+                <li
+                  key={product.id}
+                  className={classNames(styles.item(), {
+                    [styles.item__hidden()]: hidden,
+                  })}
+                >
+                  <ProductCard product={product} />
+                </li>
+              );
           })}
         </ul>
       </div>
