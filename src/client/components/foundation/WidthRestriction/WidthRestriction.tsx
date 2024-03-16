@@ -14,24 +14,25 @@ export const WidthRestriction: FC<Props> = ({ children }) => {
 
   const isReady = clientWidth !== 0;
 
-  useEffect(() => {
-    const updateClientWidth = throttle(1000, () => {
-      const width = containerRef.current?.getBoundingClientRect().width ?? 0;
-      // 横幅を最大 1024px にする
-      setClientWidth(Math.min(width, 1024));
-    });
+  const observer = new ResizeObserver(
+    throttle(1000, (entries: ResizeObserverEntry[]) => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width;
+        setClientWidth(Math.min(width, 1024));
+      }
+    })
+  );
 
-    let timer = (function tick() {
-      return setImmediate(() => {
-        updateClientWidth();
-        timer = tick();
-      });
-    })();
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      observer.observe(container);
+    }
 
     return () => {
-      clearImmediate(timer);
+      observer.disconnect();
     };
-  }, []);
+  }, [observer]);
 
   return (
     <div ref={containerRef} className={styles.container()}>

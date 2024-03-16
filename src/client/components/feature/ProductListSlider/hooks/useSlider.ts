@@ -9,25 +9,26 @@ export const useSlider = ({ items }: { items: unknown[] }) => {
   const [_slideIndex, setSlideIndex] = useState(0);
   const slideIndex = Math.min(Math.max(0, _slideIndex), items.length - 1);
 
-  useEffect(() => {
-    const updateVisibleItemCount = throttle(500, () => {
-      setVisibleItemCount(() => {
-        const containerWidth = containerElementRef.current?.getBoundingClientRect().width ?? 0;
-        return Math.max(Math.floor(containerWidth / ITEM_MIN_WIDTH), 1);
-      });
-    });
+  const observer = new ResizeObserver(
+    throttle(100, (entries: ResizeObserverEntry[]) => {
+      for (const entry of entries) {
+        const containerWidth = entry.contentRect.width;
+        const newVisibleItemCount = Math.floor(containerWidth / ITEM_MIN_WIDTH);
+        setVisibleItemCount(newVisibleItemCount);
+      }
+    })
+  );
 
-    let timer = (function tick() {
-      return setImmediate(() => {
-        updateVisibleItemCount();
-        timer = tick();
-      });
-    })();
+  useEffect(() => {
+    const container = containerElementRef.current;
+    if (container) {
+      observer.observe(container);
+    }
 
     return () => {
-      clearImmediate(timer);
+      observer.disconnect();
     };
-  }, []);
+  }, [observer]);
 
   return {
     containerElementRef,

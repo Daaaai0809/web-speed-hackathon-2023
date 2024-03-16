@@ -14,24 +14,24 @@ export const AspectRatio: FC<Props> = ({ children, ratioHeight, ratioWidth }) =>
   const containerRef = useRef<HTMLDivElement>(null);
   const [clientHeight, setClientHeight] = useState<number>(0);
 
-  useEffect(() => {
-    const updateClientHeight = throttle(1000, () => {
-      const width = containerRef.current?.getBoundingClientRect().width ?? 0;
+  const observer = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      const width = entry.contentRect.width;
       const height = (width * ratioHeight) / ratioWidth;
       setClientHeight(height);
-    });
+    }
+  })
 
-    let timer = (function tick() {
-      return setImmediate(() => {
-        updateClientHeight();
-        timer = tick();
-      });
-    })();
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      observer.observe(container);
+    }
 
     return () => {
-      clearImmediate(timer);
+      observer.disconnect();
     };
-  }, [ratioHeight, ratioWidth]);
+  }, [observer]);
 
   return (
     <div ref={containerRef} className={styles.container({ clientHeight })}>
