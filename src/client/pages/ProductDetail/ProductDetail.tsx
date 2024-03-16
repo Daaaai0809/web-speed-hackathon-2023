@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
@@ -47,13 +46,17 @@ export const ProductDetail: FC = () => {
     });
   };
 
+  if (product) {
+    document.title = product.name;
+  }
+
   return (
     <>
-      {product && (
+      {/* {product && (
         <Helmet>
           <title>{product.name}</title>
         </Helmet>
-      )}
+      )} */}
       <Layout>
         <WidthRestriction>
           <div className={styles.container()}>
